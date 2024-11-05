@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animation Example with CSS and JavaScript">
+    <title>Animation Example</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        nav {
+            background-color: #2ecc71;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #3498db;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px;
+        }
+
+        /* Animated Box */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: relative;
+            transition: all 1s ease;
+            /* Smooth transition */
+        }
+
+        /* Keyframes for Animation */
+        @keyframes moveAndScale {
+            0% {
+                transform: translateX(0) scale(1);
+                background-color: #3498db;
+            }
+
+            50% {
+                transform: translateX(200px) scale(1.5);
+                background-color: #e74c3c;
+            }
+
+            100% {
+                transform: translateX(0) scale(1);
+                background-color: #2ecc71;
+            }
+        }
+
+        /* Buttons styling */
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/index.html">Task 1</a>
+        <a href="/Task_2.html">Task 2</a>
+        <a href="/Task_3.html">Task 3</a>
+    </nav>
+
+    <div class="container">
+        <h1>CSS and JavaScript Animation Example</h1>
+
+        <!-- Animated Box -->
+        <div class="box" id="animatedBox"></div>
+
+        <!-- Control Buttons -->
+        <div>
+            <button onclick="startAnimation()">Start Animation</button>
+            <button onclick="stopAnimation()">Stop Animation</button>
+            <button onclick="resetAnimation()">Reset</button>
+        </div>
+    </div>
+    <script>
+        // JavaScript to control animation
+
+        // Function to start the animation
+        function startAnimation() {
+            let box = document.getElementById('animatedBox');
+            box.style.animation = 'moveAndScale 3s infinite'; // Apply animation
+        }
+
+        // Function to stop the animation
+        function stopAnimation() {
+            let box = document.getElementById('animatedBox');
+            box.style.animationPlayState = 'paused'; // Remove animation
+        }
+
+        // Function to reset the animation to its original state
+        function resetAnimation() {
+            let box = document.getElementById('animatedBox');
+            box.style.transform = 'translateX(0) scale(1)';
+            box.style.backgroundColor = '#3498db';
+            setTimeout(() => {
+                box.style.animation = '';
+            }, 0);
+        }
+    </script>
+</body>
+
+</html>
